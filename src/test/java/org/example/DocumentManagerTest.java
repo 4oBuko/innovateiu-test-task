@@ -120,7 +120,7 @@ class DocumentManagerTest {
         );
 
         assertNotNull(doc.getId());
-        assertTrue(!doc.getId().isBlank());
+        assertFalse(doc.getId().isBlank());
     }
 
     @Test
@@ -203,8 +203,6 @@ class DocumentManagerTest {
 
     @Test
     void findByIdObjectIsNotPresented() {
-        assertThrows(NoSuchElementException.class, () -> {
-            documentManager.findById("6").get();
-        });
+        assertThrows(NoSuchElementException.class, () -> documentManager.findById("6").get());
     }
 }
